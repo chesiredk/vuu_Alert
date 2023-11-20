@@ -1,0 +1,281 @@
+<login_screen>:
+   name:'login'
+   Screen:
+      id: pages
+      Image:
+         source: "vuu_bgimage.jpeg"
+         size: self.size
+         allow_stretch: True
+         keep_ratio: False
+         pos: self.pos
+      MDFlatButton:
+         id: exit
+         text: "close"
+         font_size: "15dp"
+         size_hint_x: .2
+         md_bg_color: "black"
+         pos_hint: {'center_x':.90, 'center_y':.95}
+         on_release: app.exit()
+      MDTextField:
+         hint_text: "Student ID/ Email"
+         icon_right: 'account'
+         font_size: "20dp"
+         size_hint_x: .85
+         pos_hint: {'center_x':.5, 'center_y':.65}
+         on_text: self.text = self.text.replace(" ", "")
+      MDTextField:
+         hint_text: "password"
+         password: True
+         icon_right: 'eye_off'
+         font_size: "20dp"
+         size_hint_x: .85
+         pos_hint: {'center_x':.5, 'center_y':.5}
+         on_text: self.text = self.text.replace(" ", "")
+      BoxLayout:
+         size_hint: .85, None
+         spacing: "4dp"
+         height: "30dp"
+         width: "30dp"
+         pos_hint: {'center_x':.5, 'center_y':.4}
+         MDCheckbox:
+            size_hint: None, None
+            height: "30dp"
+            width: "30dp"
+            pos_hint: {'center_x':.5, 'center_y':.5}
+         MDLabel:
+            text: "[ref=show password]show password[/ref]"
+            color: "white"
+            markup: True
+            pos_hint: {'center_x':.5, 'center_y':.4}
+      BoxLayout:
+         size_hint: .6, None
+         spacing: "4dp"
+         height: "30dp"
+         width: "30dp"
+         pos_hint: {'center_x':.5, 'center_y':.3}
+         MDFlatButton:
+            text: "log In"
+            font_size: "22dp"
+            size_hint_x: 1
+            md_bg_color: "black"
+            on_release: root.manager.current = 'login1'
+         MDRaisedButton:
+            id: signup
+            text: "Sign Up"
+            font_size: "22dp"
+            size_hint_x: 1
+            md_bg_color: "black"
+            on_release: root.manager.current = 'signup'
+            
+<signup_screen>:
+   name:'signup'
+   Screen:
+      MDCard:
+         size: self.size
+         pos_hint: {"center_x": .5, "center_y": .5}
+         allow_stretch: True
+         Carousel:
+            id: carousel
+            MDFloatLayout:
+               MDTextField:
+                  id: StudID
+                  hint_text: "Student ID"
+                  size_hint_x: .8
+                  pos_hint: {"center_x": .5, "center_y": .48}
+               MDTextField:
+                  id: FName
+                  hint_text: "First Name"
+                  size_hint_x: .8
+                  pos_hint: {"center_x": .5, "center_y": .38}
+               MDTextField:
+                  id: MI
+                  hint_text: "Middle Initial"
+                  size_hint_x: .8
+                  pos_hint: {"center_x": .5, "center_y": .28}
+               MDTextField:
+                  id: LName
+                  hint_text: "Last Name"
+                  size_hint_x: .8
+                  pos_hint: {"center_x": .5, "center_y": .18}
+               MDRaisedButton:
+                  text: "NEXT"
+                  size_hint_x: .4
+                  pos_hint: {"center_x": .8, "center_y": .08}
+                  color: "white"
+                  on_release: app.next()
+               MDRaisedButton:
+                  text: "BACK"
+                  size_hint_x: .4
+                  pos_hint: {"center_x": .3, "center_y": .08}
+                  color: "white"
+                  on_release: root.manager.current = 'login'
+            MDFloatLayout:
+               MDTextField:
+                  id: Email
+                  hint_text: "Email Address"
+                  size_hint_x: .8
+                  pos_hint: {"center_x": .5, "center_y": .48}
+               MDTextField:
+                  id: phone
+                  hint_text: "Phone Number"
+                  size_hint_x: .8
+                  pos_hint: {"center_x": .5, "center_y": .38}
+               MDTextField:
+                  id: RD
+                  hint_text: "Residence Building"
+                  size_hint_x: .8
+                  pos_hint: {"center_x": .5, "center_y": .28}
+               MDTextField:
+                  id: RN
+                  hint_text: "Room Number"
+                  size_hint_x: .8
+                  pos_hint: {"center_x": .5, "center_y": .18}
+               MDRaisedButton:
+                  text: "PREVIOUS"
+                  size_hint_x: .4
+                  pos_hint: {"center_x": .3, "center_y": .08}
+                  color: "black"
+                  on_release: app.previous()
+               MDRaisedButton:
+                  text: "NEXT"
+                  size_hint_x: .4
+                  pos_hint: {"center_x": .8, "center_y": .08}
+                  color: "black"
+                  on_release: app.next1()
+            MDFloatLayout:
+               MDTextField:
+                  id: passw
+                  hint_text: "Set Password"
+                  size_hint_x: .8
+                  pos_hint: {"center_x": .5, "center_y": .48}
+                  password: True
+                  on_text: self.text = self.text.replace(" ", "")
+               MDTextField:
+                  hint_text: "Confirm Password"
+                  size_hint_x: .8
+                  pos_hint: {"center_x": .5, "center_y": .38}
+                  password: True
+                  on_text: self.text = self.text.replace(" ", "")
+               MDRaisedButton:
+                  text: "PREVIOUS"
+                  size_hint_x: .4
+                  pos_hint: {"center_x": .3, "center_y": .08}
+                  color: "black"
+                  on_release: app.previous()
+               MDRaisedButton:
+                  text: "submit"
+                  size_hint_x: .4
+                  pos_hint: {"center_x": .8, "center_y": .08}
+                  color: "maroon"
+                  on_release: app.submit()
+      MDLabel:
+         text: "SignUp Form"
+         bold: True
+         font_size: '25dp'
+         pos_hint: {"center_x": .88, "center_y": .8}
+         font_style: "H4"
+      MDIconButton:
+         icon: "numeric-1-circle"
+         pos_hint: {"center_x": .34, "center_y": .65}
+         user_font_size: "35sp"
+      MDProgressBar:
+         size_hint_x: .1
+         pos_hint: {"center_x": .42, "center_y": .65}
+      MDIconButton:
+         icon: "numeric-2-circle"
+         pos_hint: {"center_x": .5, "center_y": .65}
+         user_font_size: "35sp"
+      MDProgressBar:
+         size_hint_x: .1
+         pos_hint: {"center_x": .58, "center_y": .65}
+      MDIconButton:
+         icon: "numeric-3-circle"
+         pos_hint: {"center_x": .66, "center_y": .65}
+         user_font_size: "35sp"
+
+
+<login_1>:
+   # This is the screen that runs when login button is pressed
+   name: 'login1'
+   Screen:
+      # This will create a space navigation bottom
+      MDBottomNavigation:
+         MDBottomNavigationItem:
+            name: 'screen1'
+            text: 'Home'
+            icon: 'account'
+            # this will be triggered when screen 1 is selected
+            # creates a label
+            Image:
+               source: "vuu_bgimage.jpeg"
+               size: self.size
+               allow_stretch: True
+               keep_ratio: False
+               pos: self.pos
+            MDFlatButton:
+               text: "Signout"
+               size_hint_x: .4
+               pos_hint: {"center_x": .90, "center_y": .95}
+               color: "white"
+               on_release: root.manager.current = 'login'
+            MDTextField:
+               size_hint_x: .7
+               hint_text: "Text RA"
+               max_height: "200dp"
+               mode: "round"
+               fill_color: 0, 0, 0, .4
+               multiline: True
+               helper_text: "enter text"
+               pos_hint: {"center_x": .5, "center_y": .1}
+         MDBottomNavigationItem:
+            name: 'screen2'
+            text: 'Residence'
+            icon: 'group'
+            # this will be triggered when screen 1 is selected
+            # creates a label
+            MDLabel:
+               text: 'Residence'
+               halign: 'center'
+         MDBottomNavigationItem:
+            name: 'screen3'
+            text: 'more'
+            icon: 'more'
+            # this will be triggered when screen 1 is selected
+            # creates a label
+            MDLabel:
+               text: 'VUU Alert'
+               pos_hint: {"center_x": .9, "center_y": .95}
+               bold: True
+            MDLabel:
+               text: 'version 1.0.0'
+               pos_hint: {"center_x": .92, "center_y": .93}
+               font_size: "10dp"
+            MDLabel:
+               text: '@ vuu alert'
+               pos_hint: {"center_x": .5, "center_y": .1}
+               font_size: "10dp"
+            Image:
+               source: "vuu_image.jpeg"
+               size: self.size
+               allow_stretch: False
+               keep_ratio: True
+               pos_hint: {'center_x':.5, 'center_y':.6}
+            MDFlatButton:
+               text: 'Help Center'
+               font_size: "15dp"
+               pos_hint: {'center_x':.5, 'center_y':.3}
+            MDFlatButton:
+               text: 'Contact Us'
+               font_size: "15dp"
+               pos_hint: {'center_x':.5, 'center_y':.25}
+            MDFlatButton:
+               text: 'Licenses'
+               font_size: "15dp"
+               pos_hint: {'center_x':.5, 'center_y':.20}
+            MDFlatButton:
+               text: 'Terms and Privacy Policy'
+               font_size: "15dp"
+               pos_hint: {'center_x':.5, 'center_y':.15}
+
+
+
